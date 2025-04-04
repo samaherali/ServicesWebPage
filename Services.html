@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>خدماتنا | وصل</title>
+
+  <!-- Bootstrap CSS -->
+  <link 
+    rel="stylesheet" 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+  >
+  <!-- Font Awesome (الأيقونات) -->
+  <link 
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  >
+  <!-- Animate.css (للحركات) -->
+  <link 
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  >
+  <link 
+    rel="preconnect" 
+    href="https://fonts.googleapis.com"
+  >
+  <link 
+    rel="preconnect" 
+    href="https://fonts.gstatic.com" 
+    crossorigin
+  >
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" 
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --primary-color: #035ce7; /* الأزرق الأساسي */
+      --white: #fff;
+      --light-gray: #f0f0f0;
+      --text-dark: #333;
+
+      /* ألوان الباقات */
+      --gold-color: #FFC107;   /* ذهبي */
+      --silver-color: #999999; /* فضي */
+      --free-color: #43a047;   /* أخضر للمجانية */
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Tajawal', sans-serif;
+      color: var(--text-dark);
+      background-color: var(--white);
+      overflow-x: hidden; /* لإخفاء أي تمرير أفقي */
+    }
+
+
+    a, a:hover, a:focus,
+    .btn, .btn:hover, .btn:focus,
+    .btn-price, .btn-price:hover, .btn-price:focus {
+      text-decoration: none !important;
+    }
+
+    /* ========== تنسيق الـ Navbar ========== */
+    .navbar {
+      background-color: var(--primary-color);
+    }
+    .navbar-brand, 
+    .navbar-nav .nav-link {
+      color: var(--white) !important;
+      font-weight: 600;
+    }
+    .navbar-nav .nav-link:hover {
+      color: #ccc !important;
+    }
+
+    /* ========== قسم الهيدر ========== */
+    .hero-section {
+      position: relative;
+      min-height: 350px;
+      background-color: var(--primary-color);
+      color: var(--white);
+      display: flex;
+      align-items: flex-end; /* بدء المحتوى من الأسفل */
+      justify-content: center;
+      text-align: center;
+      padding-bottom: 40px; /* مسافة إضافية لتظهر الأزرار والنص */
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("https://via.placeholder.com/1920x1080.png?text=Cars+Transparent") center/cover no-repeat;
+      opacity: 0.15;
+      z-index: 1;
+    }
+    .lines-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60%; /* الخطوط في الـ 60% العليا */
+      z-index: 2;  /* أسفل النص الذي z-index:3 */
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .line {
+      position: absolute;
+      height: 2px;
+      background-color: var(--white);
+      animation: moveLeft linear infinite;
+    }
+
+    .line1 {
+      top: 10%;
+      width: 25%;
+      animation-duration: 2s;
+    }
+    .line2 {
+      top: 25%;
+      width: 40%;
+      animation-duration: 2.4s;
+      animation-delay: 0.5s;
+    }
+    .line3 {
+      top: 40%;
+      width: 35%;
+      animation-duration: 2.8s;
+      animation-delay: 0.8s;
+    }
+    .line4 {
+      top: 15%;
+      width: 70%;
+      animation-duration: 3s;
+      animation-delay: 1.2s;
+    }
+
+    @keyframes moveLeft {
+      0%   { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .hero-content h1 {
+      font-size: 2.2rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+
+
+    .btn-hero {
+      background-color: var(--white);
+      color: var(--primary-color);
+      border: none;
+      font-size: 1rem;
+      padding: 10px 30px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
+    .btn-hero:hover {
+      background-color: #e8e8e8;
+      color: var(--primary-color);
+    }
+
+    /* ========== عناوين الأقسام ========== */
+    .section-title {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 40px;
+      color: var(--text-dark);
+    }
+
+    /* ========== قسم الخدمات ========== */
+    #services {
+      padding: 60px 0;
+      background-color: var(--white);
+    }
+    .icon-box {
+      text-align: center;
+      background-color: var(--white);
+      padding: 25px 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+    .icon-container {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: var(--white);
+      animation: floatIcon 2s ease-in-out infinite;
+    }
+    @keyframes floatIcon {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-10px); }
+    }
+    .icon-box h4 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .icon-box p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #666;
+    }
+    .icon-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    /* ========== قسم (لماذا تختارنا - مميزاتنا) ========== */
+    .content-section {
+      background-color: var(--light-gray);
+      padding: 60px 0;
+    }
+    .content-section .text-content {
+      margin-bottom: 20px;
+    }
+    .content-section h4 {
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .btn-custom {
+      background-color: #035ce7;
+      color: var(--white);
+      border: none;
+      border-radius: 25px;
+      padding: 10px 30px;
+      transition: all 0.3s ease;
+    }
+    .btn-custom:hover {
+      background-color: #002e78;
+      color: #fff;
+    }
+
+    /* ========== قسم الأسعار (الباقات) ========== */
+    .pricing-section {
+      background-color: var(--white);
+      padding: 60px 0;
+    }
+    .pricing-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      align-items: stretch; /* لضمان نفس الارتفاع */
+    }
+    .price-card {
+      width: 100%;
+      max-width: 320px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: var(--white);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .price-card:hover {
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      transform: translateY(-5px);
+    }
+
+    .price-card-header {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--white);
+      background-color: var(--gold-color); /* افتراضي ذهبي */
+    }
+    .price-card-header .icon-package {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+    .price-card-header h4 {
+      margin: 0;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .price-card-body {
+      flex: 1;
+      padding: 20px;
+      color: var(--text-dark);
+    }
+    .price {
+      font-size: 1.6rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: var(--text-dark);
+    }
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .feature-list li {
+      margin-bottom: 8px;
+    }
+    .feature-list li::before {
+      content: "\f00c"; /* FontAwesome check icon */
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      margin-right: 8px;
+      color: #28a745; 
+    }
+    .price-card-footer {
+      padding: 15px;
+    }
+    .btn-price {
+      border: none;
+      border-radius: 25px;
+      padding: 10px 30px;
+      color: var(--white);
+      font-weight: 600;
+      transition: 0.3s;
+      background-color: var(--gold-color); /* يتطابق مع هيدر الكارد */
+    }
+    .btn-price:hover {
+      filter: brightness(0.9);
+    }
+
+    .header-gold {
+      background-color: var(--gold-color);
+    }
+    .header-silver {
+      background-color: var(--silver-color);
+    }
+    .header-free {
+      background-color: var(--free-color);
+    }
+    .btn-gold {
+      background-color: var(--gold-color) !important;
+    }
+    .btn-silver {
+      background-color: var(--silver-color) !important;
+    }
+    .btn-free {
+      background-color: var(--free-color) !important;
+    }
+
+    /* ========== قسم تواصل معنا ========== */
+    .contact-section {
+      background: var(--light-gray);
+      color: var(--text-dark);
+      padding: 60px 0;
+      text-align: center;
+    }
+    .contact-section h2 {
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    .contact-section p {
+      margin-bottom: 30px;
+      color: #555;
+    }
+    .btn-contact {
+      background-color: #035ce7;
+      color: var(--white);
+      border: none;
+      border-radius: 25px;
+      padding: 10px 30px;
+      transition: all 0.3s ease;
+    }
+    .btn-contact:hover {
+      background-color: #002e78;
+      color: #fff;
+    }
+
+    /* ========== Footer ========== */
+    .footer {
+      background-color: #035ce7;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+    .footer a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 1.8rem;
+      }
+      .hero-content p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#">وصل</a>
+    <button 
+      class="navbar-toggler" 
+      type="button" 
+      data-bs-toggle="collapse" 
+      data-bs-target="#navbarNav" 
+      aria-controls="navbarNav" 
+      aria-expanded="false" 
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div 
+      class="collapse navbar-collapse justify-content-end" 
+      id="navbarNav"
+    >
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">الرئيسية</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">خدماتنا</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">من نحن</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">تواصل معنا</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <!-- الخطوط المتحركة في الجزء الأعلى -->
+  <div class="lines-container">
+    <div class="line line1"></div>
+    <div class="line line2"></div>
+    <div class="line line3"></div>
+    <div class="line line4"></div>
+  </div>
+
+  <!-- محتوى الهيدر -->
+  <div class="hero-content animate__animated animate__fadeInUp">
+    <h1>خدماتنا</h1>
+    <p class="animate__animated animate__fadeInUp animate__delay-1s">
+      حلول متكاملة لإدارة الطلبات والتوصيل بأعلى جودة
+    </p>
+    <a href="#services" class="btn-hero animate__animated animate__zoomIn animate__delay-2s">
+      اكتشف الآن
+    </a>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section id="services">
+  <div class="container">
+    <h2 class="section-title">باقات خدماتنا</h2>
+    <div class="row g-4">
+      <!-- الخدمة الأولى -->
+      <div class="col-md-6 col-lg-3">
+        <div class="icon-box animate__animated animate__fadeInUp">
+          <div class="icon-container">
+            <i class="fas fa-truck"></i>
+          </div>
+          <h4>التوصيل السريع</h4>
+          <p>
+            نقدم خدمة توصيل سريعة وفعّالة لضمان وصول الطلبات في الوقت المحدد.
+          </p>
+        </div>
+      </div>
+      <!-- الخدمة الثانية -->
+      <div class="col-md-6 col-lg-3">
+        <div class="icon-box animate__animated animate__fadeInUp animate__delay-1s">
+          <div class="icon-container">
+            <i class="fas fa-box"></i>
+          </div>
+          <h4>إدارة الطلبات</h4>
+          <p>
+            نظام متكامل لإدارة طلباتك وتتبع شحناتك لحظة بلحظة.
+          </p>
+        </div>
+      </div>
+      <!-- الخدمة الثالثة -->
+      <div class="col-md-6 col-lg-3">
+        <div class="icon-box animate__animated animate__fadeInUp animate__delay-2s">
+          <div class="icon-container">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h4>التقارير والإحصائيات</h4>
+          <p>
+            احصل على تحليلات مفصلة لإحصائيات البيع والتوصيل لتطوير عملك.
+          </p>
+        </div>
+      </div>
+      <!-- الخدمة الرابعة -->
+      <div class="col-md-6 col-lg-3">
+        <div class="icon-box animate__animated animate__fadeInUp animate__delay-3s">
+          <div class="icon-container">
+            <i class="fas fa-store"></i>
+          </div>
+          <h4>حلول للتجار</h4>
+          <p>
+            نوفر باقات خاصة لأصحاب المتاجر الإلكترونية تلبي كافة احتياجاتهم.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Content Section (لماذا تختارنا - مميزاتنا) -->
+<section class="content-section">
+  <div class="container">
+    <h2 class="section-title">لماذا تختارنا؟</h2>
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <!-- وضع صورة الفانات البيضاء هنا -->
+        <img 
+          src="white-minivans-on-road.jpg" 
+          alt="خدمة التوصيل بالفانات" 
+          class="img-fluid rounded shadow"
+        >
+      </div>
+      <div class="col-md-6">
+        <div class="text-content">
+          <h4>مميزاتنا</h4>
+          <p>
+            نقدم لك أحدث الحلول في مجال التوصيل وإدارة الطلبات، سواء كنت صاحب مشروع صغير 
+            أو متجر إلكتروني كبير. نحن نعتني بكافة التفاصيل بدءًا من استلام الطرد وحتى 
+            تسليمه، مع توفير تقارير لحظية وشاملة عن حالة الشحنة.
+          </p>
+          <p>
+            كما نعمل على تسهيل عمليات الدفع عند الاستلام، وتقديم الدعم على مدار الساعة؛ 
+            مما يضمن تجربة مريحة وآمنة لكل من التاجر والعميل.
+          </p>
+        </div>
+        <!-- زر داكن لأن خلفية القسم فاتحة -->
+        <a href="#" class="btn-custom mt-3">
+          اطلب الخدمة الآن
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing Section (الأسعار) -->
+<section class="pricing-section">
+  <div class="container">
+    <h2 class="section-title">الباقات والأسعار</h2>
+
+    <div class="pricing-row">
+      <!-- باقة ذهبية -->
+      <div class="price-card animate__animated animate__fadeInUp">
+        <div class="price-card-header header-gold">
+          <div class="icon-package">
+            <i class="fas fa-crown"></i>
+          </div>
+          <h4>الباقة الذهبية</h4>
+        </div>
+        <div class="price-card-body">
+          <div class="price">199 <small>$/شهر</small></div>
+          <ul class="feature-list">
+            <li>عدد طلبات غير محدود</li>
+            <li>تتبع متقدم للشحنات</li>
+            <li>تقارير وإحصائيات شاملة</li>
+            <li>دعم فني VIP</li>
+          </ul>
+        </div>
+        <div class="price-card-footer">
+          <button class="btn-price btn-gold">اشترك الآن</button>
+        </div>
+      </div>
+
+      <!-- باقة فضية -->
+      <div class="price-card animate__animated animate__fadeInUp animate__delay-1s">
+        <div class="price-card-header header-silver">
+          <div class="icon-package">
+            <i class="fas fa-gem"></i>
+          </div>
+          <h4>الباقة الفضية</h4>
+        </div>
+        <div class="price-card-body">
+          <div class="price">99 <small>$/شهر</small></div>
+          <ul class="feature-list">
+            <li>عدد طلبات كبير</li>
+            <li>تتبع متقدم للشحنات</li>
+            <li>تقارير وإحصائيات</li>
+            <li>دعم فني على مدار الساعة</li>
+          </ul>
+        </div>
+        <div class="price-card-footer">
+          <button class="btn-price btn-silver">اشترك الآن</button>
+        </div>
+      </div>
+
+      <!-- باقة مجانية -->
+      <div class="price-card animate__animated animate__fadeInUp animate__delay-2s">
+        <div class="price-card-header header-free">
+          <div class="icon-package">
+            <i class="fas fa-star"></i>
+          </div>
+          <h4>الباقة المجانية</h4>
+        </div>
+        <div class="price-card-body">
+          <div class="price">0 <small>$/شهر</small></div>
+          <ul class="feature-list">
+            <li>عدد طلبات محدودة</li>
+            <li>تتبع أساسي للشحنات</li>
+            <li>دعم فني خلال ساعات العمل</li>
+          </ul>
+        </div>
+        <div class="price-card-footer">
+          <button class="btn-price btn-free">اشترك الآن</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section">
+  <div class="container">
+    <h2>تواصل معنا</h2>
+    <p>
+      لديك استفسار أو ترغب في الانضمام إلى شركائنا؟ نحن هنا لمساعدتك وتقديم الإجابات.
+    </p>
+    <a href="#" class="btn-contact">اتصل بنا الآن</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <p>
+      &copy; 2025 جميع الحقوق محفوظة | 
+      <a href="#">سماهر</a>
+    </p>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script 
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js">
+</script>
+</body>
+</html>
